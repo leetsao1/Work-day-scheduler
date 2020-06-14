@@ -44,3 +44,14 @@ You are required to submit the following for review:
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+
+PSEUDO CODE
+
+
+-I need to display the current date, time 
+-I need to display 24 blocks (one for each hour of the day)
+-The blocks must color code time in the past
+-blocks must be editable and save content  ( you could do this by for loops and adding an ID depending on date and time eg. ID="January-17-2020-2:00PM")
+-event must be saved into local storage
+
+

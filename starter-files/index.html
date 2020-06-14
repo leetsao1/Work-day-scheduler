@@ -35,5 +35,48 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/lib/moment/moment.min.js"></script>
+
+<script>
+
+
+
+  //Updates current time in dashboard//
+  $('#currentDay').append("<h1 id='date'></h1>"); 
+  $('#currentDay').append("<h1 id='day'></h1>"); 
+  var currentDay = moment().format('dddd');  
+  $('#day').text(currentDay); 
+
+  setInterval(function () {
+    var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var currentDay = moment().format('dddd');  
+    $('#date').text(currentTime); 
+  }, 1000);
+
+  var daysInAYear = 365;
+  var daysInAWeek = 7;
+  var hoursInADay = 24;
+
+  for (var i = 0 ; i < 24 ; i++){
+    var dayNight = "am";
+    var k = i;
+    if(i > 11){ dayNight = "pm"; k= i - 12;}
+    
+    if(k===0){
+      var j = 12;
+      $('.container').append('<div><button id="hour-' + j + dayNight+ ' " class="time-block p-3 col"> ' + j + ' ' + dayNight+ '</button> </div>');
+    }
+    else{
+      $('.container').append('<div><button id="hour-' + k + dayNight +' " class="time-block p-3 col"> ' + k + ' ' + dayNight+ '</button> </div>');
+    }
+  }
+
+
+ 
+
+
+   
+</script>
+
   </body>
 </html>
