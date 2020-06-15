@@ -39,6 +39,30 @@
     <script src="./assets/lib/moment/moment.min.js"></script>
 
 <script>
+ 
+ var arrEvent = new Array(24);
+ //var arrEvent = new Array(24).fill("Add an event");
+ console.log(arrEvent);
+
+ for(var i=0; i < arrEvent.length; i++){
+   if(arrEvent[i] !== null){
+    arrEvent[i] = localStorage.getItem('event'+ i);
+    console.log("If 1 works");
+   }
+   if(arrEvent[i] == null){
+    arrEvent[i] = "Add an event";
+    console.log("If 2 works");
+   }
+  //  else{
+  //   arrEvent[i] = "Add an event";
+  //   console.log("else works");
+  //  }
+ }
+ console.log(arrEvent);
+
+ 
+
+
 
 
 //Updates current time in dashboard//
@@ -73,9 +97,9 @@
     var k = i;
     if(i > 11){ dayNight = "pm"; k= i - 12;}
 
-    var inputField =  '<input type="text" class="form-control hour-' + i +'" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">' ;
+    var inputField =  '<input type="text" id="input-'+i+'" class="form-control hour-' + i +'" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="'+arrEvent[i]+'">' ;
     //var inputButton = '<div class="input-group-prepend"><button id="hour-' + k + dayNight+'" class="btn btn-outline-secondary">Add event</button></div>' ;
-    var inputButton = '<div class="input-group-prepend"><button class="btn btn-outline-secondary hour-value-' + k + dayNight+'">Add event</button></div>' ;
+    var inputButton = '<div class="input-group-prepend"><button value="'+i+'" id="btn-'+i+'" class="btn btn-outline-secondary hour-value-' + k + dayNight+'">Add event</button></div>' ;
     
     if(k===0){
       var j = 12;
@@ -98,17 +122,35 @@
 
     if (currentTimeNumber < i){
     $('.hour-'+i ).attr("style", "background-color:coral;");
-    // $('.hour-'+i).css("color", "white");
+   
     }
   }
 
- 
+  
+  //var eventX = localStorage.getItem('input4');
+
+
+  $('.btn').on("click", function(event) {
+  event.preventDefault();
+
+  var btnNumber = $(this).val().trim();
+  console.log(btnNumber);
+  arrEvent[btnNumber] = $("#input-"+btnNumber).val().trim();
+  console.log(arrEvent[btnNumber]);
+  localStorage.setItem('event'+btnNumber ,arrEvent[btnNumber]);
+  console.log(arrEvent);
+  })
 
 
 
-
-
-
+  //**THIS WORKS
+  // $('#btn-4').on("click", function(event) {
+  // event.preventDefault();
+  // eventX = $("#input-4").val().trim();
+  // console.log('after setting it: '+ eventX);
+  // localStorage.setItem('input4',eventX);
+  // })
+  
 
  
    
